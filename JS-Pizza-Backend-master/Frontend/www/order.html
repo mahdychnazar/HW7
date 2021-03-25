@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Order</title>
+
+    <!-- Bootsrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- LESS основний файл -->
+    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less"/>
+    <!-- LESS JavaScript компілятор -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCsgngzjmMPslDcCb-3DcO6UTbOWYjli9M"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-fixed-top col-lg-9 col-md-8 col-sm-7 col-xs-6  topPanel">
+    <div class="leftPanel">
+        <div class="companyName">
+            <img src="assets/images/discount.svg" class="pic">
+            <div class="KMA">
+                <div class="PIZZA">PIZZA</div>
+                <div>KMA</div>
+            </div>
+        </div>
+        <div class="top">
+            <div class="phoneNumber label">8-800-555-35-35</div>
+            <div class="visible-lg-inline-block visible-md-inline-block visible-sm-inline-block label">24 години/7 днів на тиждень</div>
+            <div class="visible-lg-inline-block visible-md-inline-block label">Безкоштовна доставка піци</div>
+            <button type="button" class="btn btn-warning loginButton">Ввійти</button>
+            <button type="button" class="btn btn-warning orderButton">Замовлення</button>
+        </div>
+        <div class="hidden-xs pizza">Піца</div>
+    </div>
+</nav>
+<div class="container-fluid col-lg-9 col-md-8 col-sm-7 col-xs-6">
+<div class="menu orderMenu visible">
+    <h3>Контактні дані</h3>
+    <form class="form-horizontal infoForm">
+        <div class="form-group" id="nameGroup">
+            <label class="col-sm-2 col-lg-1 control-label">Ім'я</label>
+            <div class="col-sm-10 col-lg-11">
+                <input class="form-control" id="inputName" placeholder="Введіть ім'я та прізвище">
+            </div>
+            <div class="notVisible error" id="nameError">Введіть власне ім'я, без цифр та знаків</div>
+        </div>
+        <div class="form-group" id="phoneGroup">
+            <label class="col-sm-2 col-lg-1 control-label">Телефон</label>
+            <div class="col-sm-10 col-lg-11">
+                <input class="form-control" id="inputPhone" placeholder="Введіть номар телефону (+380 або 0)">
+            </div>
+            <div class="notVisible error" id="phoneError">Введіть ваш номер телефону у форматі +380 aбо починається з 0</div>
+        </div>
+        <div class="form-group" id="addressGroup">
+            <label class="col-sm-2 col-lg-1 control-label">Адреса</label>
+            <div class="col-sm-8 col-lg-10">
+                <input class="form-control" id="inputAddress" placeholder="Введіть адресу доставки (для пошуку 'знайти')">
+            </div>
+            <div class="col-sm-2 col-lg-1 form-group adButton" id="adButton">
+                <button type="button" class="btn btn-warning" id="findPlaceButton">Знайти</button>
+            </div>
+            <div class="notVisible error" id="addressError">Доставка неможлива</div>
+        </div>
+    </form>
+    <address>
+        <br>
+        <strong>Інформація про ваше замовлення:</strong><br><br>
+        <strong>Час доставки: </strong><h id="timeDeliver">невідомий</h><br><br>
+        <strong>Адреса доставки: </strong><h id="addressDeliver">невідома</h><br><br>
+    </address>
+    <div class="sendButton">
+    <button type="button" class="btn btn-warning" id="sendInfo">Далі ></button>
+    </div>
+    <div id="liqpay"></div>
+    <div id="map"></div>
+
+</div>
+</div>
+<div class="discount">
+    <img src="assets/images/discount.svg" class="pic">
+    <div class="firstLabel">ЦЬОГО ТИЖНЯ НА ВСЕ</div>
+    <div class="SecondLabel">-20%</div>
+</div>
+<div class="shadow"></div>
+<div id="cart" class="col-lg-3 col-md-4 col-sm-5 col-xs-6 navbar notVisible">
+    <div class="rightPanel">
+        <div class="rightPanelLabel">
+            <div class="rounded-circle orderLabel">Замовлення</div>
+            <div class="rounded-circle numberLabel" id="totalOrder">0</div>
+        </div>
+        <div class="buyPizzasList">
+        </div>
+        <div class="buy">
+            <div class="buyLabel">Сума замовлення</div>
+            <div class="totalPrice" id="totalPrice">0 грн</div>
+            <button type="button" class="btn btn-Light buyButton">Редагувати замовлення</button>
+        </div>
+    </div>
+</div>
+<script src="//static.liqpay.ua/libjs/checkout.js" async></script>
+<!-- jQuery JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!--Bootsrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!--Own JavaScript -->
+<script type="text/javascript" src="assets/js/main.js"></script>
+<script type="text/javascript" src="assets/js/maps.js"></script>
+</body>
+</html>

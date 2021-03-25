@@ -1,0 +1,218 @@
+@topPanelSize: 85px;
+
+#cart {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  position: fixed;
+  padding-right: 0;
+  padding-left: 0;
+  right: 0;
+  top: 0;
+
+  border: 1px;
+  @media (max-width: 700px) {
+    height: 100%;
+    width: 100%;
+    .visible {
+      display: block;
+    }
+    .notVisible {
+      display: none;
+    }
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  .rightPanel {
+    background: #e5e4e4;
+    height: 100vh;
+    padding-left: 0;
+    padding-right: 0;
+    float: right;
+    width: 100%;
+    overflow: auto;
+
+
+    @media (max-width: 700px) {
+      width: 100%;
+    }
+
+    .rightPanelLabel {
+      position: absolute;
+      width: 100%;
+      z-index: 5;
+      height: @topPanelSize;
+      font-weight: bold;
+      display: block;
+      background: white;
+      font-size: medium;
+
+      .orderLabel {
+        margin-left: 10px;
+        margin-top: (@topPanelSize/2)-12px;
+        display: inline-block;
+      }
+
+      .numberLabel {
+        text-align: center;
+        font-size: large;
+        color: white;
+        display: inline-block;
+        background: @buttonColor;
+        border-radius: 50%;
+        min-width: 25px;
+        height: 25px;
+      }
+
+      .btn {
+        margin-top: (@topPanelSize/2)-10px;
+        margin-right: 10px;
+        padding: 0;
+        display: block;
+        float: right;
+        font-size: small;
+        color: dimgrey;
+        border: 0;
+        outline: 0 !important;
+      }
+    }
+  }
+
+  .buyPizzasList {
+    margin-top: @topPanelSize;
+    margin-bottom: 120px;
+    .buyPizza {
+
+      border: 0;
+      border-bottom-width: 1px;
+      border-bottom-color: darkgrey;
+      border-style: solid;
+      padding-bottom: 10px;
+      .infAboutPizza {
+        display: inline-block;
+        margin-left: 8px;
+
+        .pizzaName {
+          color: @buttonColor;
+        }
+
+        .weight {
+          margin-left: 10px;
+        }
+
+        .totalPrice {
+          margin-top: 10px;
+          font-weight: bold;
+          font-size: large;
+
+          .btn {
+            height: 28px;
+            margin-right: 5px;
+            margin-left: 5px;
+            width: 28px;
+            border-radius: 50%;
+            outline: 0 !important;
+            position: relative;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            text-indent: 0;
+            .label {
+              font-size: x-large;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-57%, -50%);
+              padding: 0;
+            }
+            .minusLabel{
+              top: 43%;
+            }
+
+            .delete{
+              top: 46%;
+              color: @buttonColor;
+              font-size: large;
+            }
+          }
+          .notVisible {
+            display: none;
+          }
+          .visible {
+            display: block;
+          }
+          .deleteButton{
+            margin-left: 15px;
+          }
+          .number{
+            display: inline-block;
+            font-size: medium;
+            font-weight: normal;
+          }
+          .numberOrder{
+            font-weight:bold;
+            margin-left: 10px;
+          }
+        }
+      }
+
+    }
+    img{
+      height: 12px;
+      margin-bottom: 3px;
+    }
+    .img{
+      display: block;
+      float: right;
+      margin-top: 9px;
+      overflow: hidden;
+      position: relative;
+      height: 90px;
+      width: 45px;
+      img{
+        width: 200%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border-radius: 50%;
+      }
+    }
+  }
+  .buy{
+    position: absolute;
+    bottom: 0;
+    padding-top: 10px;
+    background: white;
+    width: 100%;
+    height: 130px;
+    display: block;
+    font-size: large;
+    font-weight: bold;
+    .buyLabel{
+      margin-left: 10px;
+      display: block;
+      float: left;
+    }
+    .totalPrice{
+      margin-right: 10px;
+      display: block;
+      float: right;
+      font-size: x-large;
+    }
+    .buyButton{
+      font-size: x-large;
+      height: 50px;
+      margin-top: 15px;
+      margin-left: 5%;
+      width: 90%;
+      outline: 0 !important;
+    }
+  }
+}
+
+
+
+
+
+
+

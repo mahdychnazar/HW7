@@ -1,0 +1,359 @@
+@mainColor: #0000ff;
+@buttonColor: #ea862e;
+@labelSize: 23px;
+
+
+@media (max-width: 700px) {
+  .notVisible {
+    display: none;
+  }
+  .visible {
+    display: block;
+  }
+}
+
+
+
+body {
+  min-width: 350px;
+  .topPanel {
+    display: block;
+    position: fixed;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+    @media (max-width: 700px) {
+      width: 100%;
+
+    }
+
+    .leftPanel {
+      color: white;
+      background: rgba(0, 0, 0, 0.596);
+      height: @topPanelSize;
+
+      .companyName {
+        .pic {
+          width: @topPanelSize;
+          transform: rotate(180deg);
+          position: absolute;
+          bottom: -8px;
+          left: 10px;
+        }
+
+        .KMA {
+          .PIZZA {
+            font-size: large;
+          }
+          line-height: 100%;
+          margin-top: 20px;
+          text-align: center;
+          font-size: x-large;
+          font-weight: initial;
+        }
+        width: @topPanelSize;
+        height: @topPanelSize;
+        box-sizing: border-box;
+        margin-left: 10px;
+        float: left;
+        background: @buttonColor;
+
+        border-width: 1px;
+        border-color: #c85d00;
+        border-bottom: 0;
+        border-top: 0;
+        border-style: solid;
+
+      }
+
+      .top {
+        box-sizing: border-box;
+        .phoneNumber {
+          padding-left: 0;
+          margin-top: 11px;
+          display: inline-block;
+          font-size: medium !important;
+          font-weight: initial;
+        }
+        .label {
+          font-weight: normal;
+          font-size: small;
+          color: white;
+        }
+
+        .loginButton {
+          top: 5px;
+          right: 10px;
+          @media (max-width: 800px) {
+            top: 45px;
+          }
+          display: block;
+          position: absolute;
+          height: 30px;
+          width: 100px;
+          outline: 0 !important;
+        }
+
+
+        border-style: solid;
+        border-bottom-color: #e5e4e4;
+        border-width: 0;
+        border-bottom-width: 1px;
+        margin-right: 5px;
+        margin-left: @topPanelSize+15px;
+        padding-bottom: 8.6px;
+
+        .orderButton {
+          display: none;
+          @media (max-width: 700px) {
+            top: 5px;
+            right: 10px;
+            display: block;
+            position: absolute;
+            height: 30px;
+            width: 100px;
+            outline: 0 !important;
+          }
+        }
+      }
+
+      .pizza {
+        display: inline-block;
+        margin-left: 5px;
+        margin-top: 9px;
+      }
+    }
+  }
+  .container-fluid {
+    padding-right: 0;
+    @media (max-width: 700px) {
+      width: 100%;
+    }
+  }
+
+  .row {
+    margin-right: 0;
+    margin-bottom: @topPanelSize;;
+    .menu {
+      margin-top: @topPanelSize;
+      @media (max-width: 700px) {
+        margin-top: 0;
+      }
+      .allPizza {
+        text-align: center;
+        font-size: xx-large;
+        font-weight: bold;
+
+        .numberLabel {
+          width: 33px;
+          height: 33px;
+          color: white;
+          display: inline-block;
+          font-size: x-large;
+          background: @buttonColor;
+          border-radius: 50%;
+        }
+      }
+
+      .typeOfPizza {
+        margin-top: 17px;
+        margin-bottom: 17px;
+        justify-content: center;
+        text-align: center;
+
+        .btn {
+          margin-top: 5px;
+          margin-bottom: 5px;
+          display: inline-block;
+          width: 180px;
+          font-size: large;
+          border-radius: 10px;
+          color: @buttonColor;
+          font-weight: normal;
+          background-color: white;
+          outline: 0 !important;
+        }
+        .btn:active{
+          color: white;
+          background-color: @buttonColor;
+        }
+      }
+
+      .pizza-card {
+        .img-fluid {
+          border-radius: 50%;
+          max-width: 100%;
+          height: auto;
+        }
+
+        img {
+          max-width: 250px;
+        }
+
+        h3 {
+          color: @buttonColor;
+          font-weight: bold;
+        }
+        .pizzaName {
+          color: @buttonColor;
+          height: 55px;
+          margin-bottom: 0;
+        }
+
+        .typeOfPizza {
+          text-align: left;
+          margin: 0;
+          font-size: smaller;
+          color: dimgray;
+          font-weight: bold;
+        }
+
+        .description {
+          @media (min-width: 1200px) {
+            height: 80px;
+          }
+          @media (max-width: 1200px) {
+            height: 120px;
+          }
+          @media (max-width: 1100px) {
+            height: 140px;
+          }
+          @media (max-width: 992px) {
+            height: 130px;
+          }
+          @media (max-width: 767px) {
+            height: 80px;
+          }
+        }
+
+        .badge {
+          position: absolute;
+          left: 10px;
+          top: -15px;
+          font-size: large;
+          font-weight: bold;
+          padding: 8px;
+        }
+
+        .newBadge {
+          background: red;
+        }
+
+        .popularBadge {
+          background: green;
+        }
+
+        .columns {
+          text-align: center;
+          letter-spacing: 40px;
+          @media (max-width: 1200px) {
+            letter-spacing: 20px;
+          }
+
+          .pizzaColumn {
+            display: inline-block;
+            width: 40%;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: normal;
+
+            img {
+              margin-bottom: 3px;
+            }
+
+            .btn {
+              outline: 0 !important;
+            }
+
+            .totalPrice {
+              font-size: x-large;
+            }
+          }
+        }
+      }
+
+      .companyInfo {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: @topPanelSize;
+        color: dimgray;;
+        text-align: center;
+        vertical-align: middle;
+        display: block;
+        background: white;
+        border-style: solid;
+        border-width: 0;
+        border-top-width: 1px;
+        border-color: dimgray;
+        .firstInfoRow {
+          margin-left: 5px;
+          margin-right: 5px;
+          margin-top: @topPanelSize*0.1;
+        }
+        .secondInfoRow {
+          margin-left: 5px;
+          margin-right: 5px;
+          margin-top: 7px;
+        }
+      }
+    }
+  }
+
+  .shadow {
+    z-index: 5;
+    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.5);
+    height: 20px;
+    border-top-width: 20px;
+    width: 100%;
+    position: fixed;
+    bottom: -20px;
+  }
+
+  .discount {
+    width: @topPanelSize;
+    height: @topPanelSize*1.2;
+    background: @buttonColor;
+    position: fixed;
+    bottom: 0;
+    left: 10px;
+    border-width: 1px;
+    border-color: #d16200;
+    border-bottom: 0;
+    border-top: 0;
+    border-style: solid;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: small;
+    font-weight: bold;
+    color: white;
+
+    .firstLabel {
+      padding-top: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    .SecondLabel {
+      margin-left: 5px;
+      margin-right: 5px;
+      border-width: 1px;
+      border-color: #d16200;
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 0;
+      border-style: dotted;
+      padding-top: 5px;
+    }
+
+    img {
+      width: @topPanelSize;
+      position: absolute;
+      top: -8px;
+      left: -1px;
+    }
+  }
+}
+
+@import "pizza/pizza-card";
+@import "pizza/order";

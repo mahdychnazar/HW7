@@ -1,0 +1,84 @@
+
+.orderMenu {
+  height: 100%;
+  width: 100%;
+  margin-top: @topPanelSize*1.5;
+  background: white;
+  @media (max-width: 700px) {
+    margin-top: @topPanelSize*1.5;
+  }
+  .btn{
+    outline: 0 !important;
+  }
+
+  h3 {
+    @media (max-width: 700px) {
+      margin-top: 5px;
+    }
+    margin-top: 100px;
+    margin-left: 15px;
+    font-weight: bold;
+  }
+  .addressError{
+    max-height: 54px;
+  }
+  .adButton{
+    margin: 0;
+    padding: 0;
+    @media (max-width: 767px) {
+      display: block;
+      padding-left: 15px;
+      padding-right: 15px;
+      margin: 15px;
+    }
+  }
+  .infoForm {
+    .notVisible {
+      display: none;
+    }
+
+    .visible {
+      display: block;
+    }
+    margin-left: 15px;
+    margin-top: 20px;
+    padding-right: 15px;
+
+    .error {
+      color: #a94442;
+      padding-left: 10%;
+      padding-right: 15px;
+    }
+  }
+
+  address {
+    margin-left: 15px;
+    background: white;
+    border-style: solid;
+    border-width: 1px;
+    border-left-width: 5px;
+    border-color: #e5e4e4;;
+    border-left-color: @buttonColor;
+    padding-left: 5px;
+    margin-right: 15px;
+  }
+  .sendButton {
+    display: block;
+    width: 100%;
+    height: 34px;
+    #sendInfo {
+      outline: 0 !important;
+      float: right;
+      margin-right: 15px;
+    }
+  }
+  #map {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 90%;
+    height: 320px;
+  }
+
+}
