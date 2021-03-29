@@ -237,45 +237,42 @@
   $("body").find(".typeOfPizza").find("input").change(function () {
       filterPizza(this);
   });
-  
-  
-  function filterPizza(filter) {
-      var pizzaToShow = [];
-      var idOption = $(filter).attr('id');
-      Pizza_List.forEach(function (pizza) {
-          switch (idOption) {
-              case 'filterAll':
-                  pizzaToShow.push(pizza);
-                  break;
-              case 'filterMeat':
-                  if (pizza.content.meat !== undefined) {
-                      pizzaToShow.push(pizza);
-                  }
-                  break;
-              case 'filterPineapple':
-                  if (pizza.content.pineapple !== undefined) {
-                      pizzaToShow.push(pizza);
-                  }
-                  break;
-              case 'filterMushrooms':
-                  if (pizza.content.mushroom !== undefined) {
-                      pizzaToShow.push(pizza);
-                  }
-                  break;
-              case 'filterFish':
-                  if (pizza.content.ocean !== undefined) {
-                      pizzaToShow.push(pizza);
-                  }
-                  break;
-              case 'filterVega':
-                  if (pizza.content.ocean === undefined && pizza.content.meat === undefined) {
-                      pizzaToShow.push(pizza);
-                  }
-                  break;
-          }
-      });
-      showPizzaList(pizzaToShow);
-  }
+
+        function filterPizza(filter) {
+            var pizzaToShow = [];
+            var idOption = $(filter).attr('id');
+            Pizza_List.forEach(function (pizza) {
+                if(idOption === 'filterAll') {
+                    pizzaToShow.push(pizza);
+                }
+                else if(idOption === 'filterMeat') {
+                    if (pizza.content.meat !== undefined) {
+                        pizzaToShow.push(pizza);
+                    }
+                }
+                else if(idOption === 'filterPineapple') {
+                    if (pizza.content.pineapple !== undefined) {
+                        pizzaToShow.push(pizza);
+                    }
+                }
+                else if(idOption === 'filterMushrooms') {
+                    if (pizza.content.mushroom !== undefined) {
+                        pizzaToShow.push(pizza);
+                    }
+                }
+                else if(idOption === 'filterFish') {
+                    if (pizza.content.ocean !== undefined) {
+                        pizzaToShow.push(pizza);
+                    }
+                }
+                else if(idOption === 'filterVega') {
+                    if (pizza.content.ocean === undefined && pizza.content.meat === undefined) {
+                        pizzaToShow.push(pizza);
+                    }
+                }
+            });
+            showPizzaList(pizzaToShow);
+        }
   
   function initialiseMenu() {
       API.getPizzaList(initPizzaList);
@@ -305,11 +302,16 @@
   });
   
   function isCharName(c) {
-      return (c.toLowerCase() != c.toUpperCase()) || c == " " || c == "'" || c == "-";
+      if(c == " " || c == "'" || c == "-" || (c.toUpperCase() != c.toLowerCase())){
+          return true;
+      }
+
   }
   
   function isCharNumber(c) {
-      return c >= '0' && c <= '9';
+      if( c >= '0' && c <= '9'){
+          return true;
+      };
   }
 
   function checkName(name) {
@@ -406,13 +408,13 @@
           var ordered = [];
           var price = 0;
           basil.get("cartSt").forEach(element => {
-              var singlePizza = {
-                  pizza: element.pizza.title,
-                  size: element.size,
-                  quantity: element.quantity
-              }
-              price += element.pizza[element.size].price * element.quantity;
-              ordered.push(singlePizza);
+                  var singlePizza = {
+                      pizza: element.pizza.title,
+                      size: element.size,
+                      quantity: element.quantity
+                  }
+                    price += element.quantity * element.pizza[element.size].price;
+                 ordered.push(singlePizza);
           });
           var data = {
               name: name,

@@ -1,27 +1,33 @@
 
-var marker2 = null;
+var pointMarker = null;
 var html_element = document.getElementById("map");
+
 var mapProp = {
     center: new google.maps.LatLng(50.464379, 30.519131),
     zoom: 11
 };
-var canMakeDeliver = false;
-var point = new google.maps.LatLng(50.464379, 30.519131);
+
+var Deliverable = false;
+
 var map = new google.maps.Map(html_element, mapProp);
+var point = new google.maps.LatLng(50.464379, 30.519131);
+
 function initialize() {
     var marker1 = new google.maps.Marker({
-        position: point,
         map: map,
+        position: point,
         icon: "assets/images/map-icon.png"
     });
+
+
     google.maps.event.addListener(map, 'click', function (me) {
         var coordinates = me.latLng;
         geocodeLatLng(coordinates, function (err, address) {
             if (err === null) {
-                if (marker2 !== null){
-                    marker2.setMap(null);
+                if (pointMarker !== null){
+                    pointMarker.setMap(null);
                 }
-                marker2 = new google.maps.Marker({
+                pointMarker = new google.maps.Marker({
                     position: coordinates,
                     map: map,
                     icon: "assets/images/home-icon.png"
@@ -30,29 +36,34 @@ function initialize() {
                 $("#addressDeliver").html(address);
                 calculateRoute(point, coordinates, duration);
                 directionsDisplay.setMap(map);
-                canMakeDeliver = true;
+                Deliverable = true;
             } else {
-                canMakeDeliver = false;
+                Deliverable = false;
             }
             checkAddress();
         });
     });
 }
+
+
+
 google.maps.event.addDomListener(window, 'load', initialize);
 function geocodeLatLng(latlng, callback) {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({'location': latlng}, function (results, status) {
         if (status === google.maps.GeocoderStatus.OK && results[1]) {
             var address = results[1].formatted_address;
-            canMakeDeliver = true;
+            Deliverable = true;
             callback(null, address);
         } else {
-            canMakeDeliver = false;
+            Deliverable = false;
             callback(new Error("Can't find address"));
         }
         checkAddress();
     });
 }
+
+
 var directionsDisplay = null;
 function calculateRoute(A_latlng, B_latlng,  callback) {
     if (directionsDisplay !==null) {
@@ -73,12 +84,12 @@ function calculateRoute(A_latlng, B_latlng,  callback) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
             var leg = response.routes[0].legs[0];
-            canMakeDeliver = true;
+            Deliverable = true;
             callback(null, {
                 duration: leg.duration
             });
         } else {
-            canMakeDeliver = false;
+            Deliverable = false;
             callback(new Error("Can' not find direction"));
         }
             checkAddress();
@@ -90,10 +101,10 @@ function geocodeAddress(address,  callback) {
     geocoder.geocode({'address': address}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK&& results[0])  {
             var coordinates = results[0].geometry.location;
-            canMakeDeliver = true;
+            Deliverable = true;
             callback(null, coordinates);
         } else {
-            canMakeDeliver = false;
+            Deliverable = false;
             callback(new Error("Can not find the adress"));
         }
         checkAddress();
@@ -104,10 +115,10 @@ function findAddress(err, coordinates) {
     if (err === null){
         geocodeLatLng(coordinates, function (err, address) {
             if (err === null) {
-                if (marker2 !== null){
-                    marker2.setMap(null);
+                if (pointMarker !== null){
+                    pointMarker.setMap(null);
                 }
-                marker2 = new google.maps.Marker({
+                pointMarker = new google.maps.Marker({
                     position: coordinates,
                     map: map,
                     icon: "assets/images/home-icon.png"
@@ -121,7 +132,7 @@ function findAddress(err, coordinates) {
     }
 }
 function checkAddress() {
-    if (canMakeDeliver) {
+    if (Deliverable) {
         $("#addressGroup").removeClass("has-error");
         $("#addressGroup").addClass("has-success");
         $("#addressError").removeClass("visible");
@@ -136,8 +147,8 @@ function checkAddress() {
         if (directionsDisplay!==null) {
             directionsDisplay.setMap(null);
         }
-        if (marker2 !==null) {
-            marker2.setMap(null);
+        if (pointMarker !==null) {
+            pointMarker.setMap(null);
         }
     }
 }
@@ -148,7 +159,7 @@ $("#findPlaceButton").click(function (){
 
 
 function duration(err, time){
-    if (err === null && canMakeDeliver){
+    if (err === null && Deliverable){
         $("#timeDeliver").html(time.duration.text);
     } else {
         $("#timeDeliver").html("невідомий");
